@@ -23,4 +23,3 @@ system.
 
     $ cmake --version
     cmake version 2.8.10
-    
