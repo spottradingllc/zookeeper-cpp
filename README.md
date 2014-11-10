@@ -5,5 +5,5 @@ You should be familiar with Zookeeper and have read the http://zookeeper.apache.
 
 Downloading cpp-netlib
 ----------------------
-You can find official release packages of the library at::
+You can find the official release packages of the library at::
 https://github.com/spottradingllc/zookeeper-cpp
