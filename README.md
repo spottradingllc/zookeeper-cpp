@@ -6,7 +6,8 @@ You should be familiar with Zookeeper and have read the http://zookeeper.apache.
 Downloading
 -----------
 You can find the official release packages of the library at::
-https://github.com/spottradingllc/zookeeper-cpp
+
+    https://github.com/spottradingllc/zookeeper-cpp
 
 Building and Installing
 -----------------------
