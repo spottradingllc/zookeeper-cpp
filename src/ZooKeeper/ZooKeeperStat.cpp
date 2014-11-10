@@ -1,7 +1,5 @@
 #include "ZooKeeperStat.h"
 
-#include <boost/format.hpp>
-
 
 namespace Spot { namespace Common { namespace ZooKeeper
 {
@@ -83,21 +81,21 @@ namespace Spot { namespace Common { namespace ZooKeeper
 
   std::ostream& operator<<( std::ostream& out, const ZooKeeperStat& zooKeeperStat )
   {
-    boost::format result( "aversion <%d> ctime <%ld> cversion <%d> czxid <%ld> dataLength <%d> ephemeralOwner <%ld> mtime <%ld> mzxid <%ld> numChildren <%d> pzxid <%ld> version <%d>" );
-    result % zooKeeperStat.m_stat.aversion;
-    result % zooKeeperStat.m_stat.ctime;
-    result % zooKeeperStat.m_stat.cversion;
-    result % zooKeeperStat.m_stat.czxid;
-    result % zooKeeperStat.m_stat.dataLength;
-    result % zooKeeperStat.m_stat.ephemeralOwner;
-    result % zooKeeperStat.m_stat.mtime;
-    result % zooKeeperStat.m_stat.mzxid;
-    result % zooKeeperStat.m_stat.numChildren;
-    result % zooKeeperStat.m_stat.pzxid;
-    result % zooKeeperStat.m_stat.version;
+    char result[1024];
+    sprintf( result, "aversion <%d> ctime <%llu> cversion <%d> czxid <%llu> dataLength <%d> ephemeralOwner <%llu> mtime <%llu> mzxid <%llu> numChildren <%d> pzxid <%llu> version <%d>",
+      zooKeeperStat.m_stat.aversion,
+      zooKeeperStat.m_stat.ctime,
+      zooKeeperStat.m_stat.cversion,
+      zooKeeperStat.m_stat.czxid,
+      zooKeeperStat.m_stat.dataLength,
+      zooKeeperStat.m_stat.ephemeralOwner,
+      zooKeeperStat.m_stat.mtime,
+      zooKeeperStat.m_stat.mzxid,
+      zooKeeperStat.m_stat.numChildren,
+      zooKeeperStat.m_stat.pzxid,
+      zooKeeperStat.m_stat.version);
 
-
-    return out << result.str();
+    return out << result;
   }
 
 } } } // namespaces

@@ -1,2 +1,1 @@
-/Users/davidshrader/Development/Spot/Core/configuration-cpp/lib/CMakeFiles/Spot.Common.ZooKeeper_A.dir
-/Users/davidshrader/Development/Spot/Core/configuration-cpp/lib/CMakeFiles/Spot.Common.ZooKeeper_SO.dir
+/Users/davidshrader/Development/Spot/Core/zookeeper-cpp/lib/CMakeFiles/Spot.Common.ZooKeeper_SO.dir

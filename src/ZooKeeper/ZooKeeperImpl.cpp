@@ -3,7 +3,6 @@
 #include <functional>
 #include <string.h>
 
-#include <boost/format.hpp>
 #include <zookeeper/zookeeper.h>
 
 #include "ZooKeeperException.h"
@@ -47,7 +46,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
   {
     if( m_logger != nullptr )
     {
-      throw std::runtime_error( boost::str( boost::format( "[%s:%i] Logging evengt handler already initialized" ) % __FUNCTION__ % __LINE__ ) );
+      char result[1024];
+      sprintf( result, "[%s:%i] Logging event handler already initialized", __FUNCTION__, __LINE__ );
+
+      throw std::runtime_error( result );
     }
 
     m_logger = logger;
@@ -60,7 +62,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
   {
     if( m_logger == nullptr )
     {
-      throw std::runtime_error( boost::str( boost::format( "[%s:%i] Logging event handler not initialized" ) % __FUNCTION__ % __LINE__ ) );
+      char result[1024];
+      sprintf( result, "[%s:%i] Logging event handler not initialized", __FUNCTION__, __LINE__ );
+
+      throw std::runtime_error( result );
     }
 
     LOGGER_DEBUG( m_logger, "Logger unregistered" );
@@ -163,7 +168,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
   {
     m_zooKeeperNodeManager->ChangeNode( path, data );
 
-    LOGGER_DEBUG( m_logger, boost::str( boost::format( "Node <%s> data changed to <%s>" ) % path % data ) );
+    char result[1024];
+    sprintf( result, "Node <%s> data changed to <%s>", path.c_str(), data.c_str() );
+
+    LOGGER_DEBUG( m_logger, result );
   }
 
 
@@ -171,7 +179,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
   {
     m_zooKeeperNodeManager->DeleteNode( path );
 
-    LOGGER_DEBUG( m_logger, boost::str( boost::format( "Node <%s> deleted" ) % path ) );
+    char result[1024];
+    sprintf( result, "Node <%s> deleted", path.c_str() );
+
+    LOGGER_DEBUG( m_logger, result );
   }
 
 
@@ -179,7 +190,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
   {
     m_zooKeeperNodeManager->AddEventHandler( path, eventHandler );
 
-    LOGGER_DEBUG( m_logger, boost::str( boost::format( "Node event handler added to path <%s>" ) % path ) );
+    char result[1024];
+    sprintf( result, "Node event handler added to path <%s>", path.c_str() );
+
+    LOGGER_DEBUG( m_logger, result );
   }
 
 
@@ -187,7 +201,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
   {
     m_zooKeeperNodeManager->RemoveEventHandler( path );
 
-    LOGGER_DEBUG( m_logger, boost::str( boost::format( "Node event handler removed from path <%s>" ) % path ) );
+    char result[1024];
+    sprintf( result, "Node event handler removed from path <%s>", path.c_str() );
+
+    LOGGER_DEBUG( m_logger, result );
   }
 
 } } } // namespaces

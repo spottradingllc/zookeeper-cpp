@@ -4,8 +4,6 @@
 
 #include <zookeeper/zookeeper.h>
 
-#include <boost/format.hpp>
-
 
 namespace Spot { namespace Common { namespace ZooKeeper
 {
@@ -15,18 +13,27 @@ namespace Spot { namespace Common { namespace ZooKeeper
 
     if( error == ZSYSTEMERROR )
     {
-      m_what = boost::str( boost::format( "Error <%d> Description <%s> errno:%d" ) % error % description % errno );
+      char result[1024];
+      sprintf( result, "Error <%d> Description <%s> errno:%d", error, description, errno );
+
+      m_what.assign( result );
     }
     else
     {
-      m_what = boost::str( boost::format( "Error <%d> Description <%s>" ) % error % description );
+      char result[1024];
+      sprintf( result, "Error <%d> Description <%s>", error, description );
+
+      m_what.assign( result );
     }
   }
 
 
   ZooKeeperException::ZooKeeperException( int error, const std::string& description )
   {
-    m_what = boost::str( boost::format( "Error <%d> Description <%s>" ) % error % description );
+    char result[1024];
+    sprintf( result, "Error <%d> Description <%s>", error, description.c_str() );
+
+    m_what.assign( result );
   }
 
 

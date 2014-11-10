@@ -13,22 +13,22 @@ cd ./lib
 cmake ../ && make
 
 # go to sample project
-cd ../sample
+#cd ../sample
 
 # clean
-rm -rf ./bin
+#rm -rf ./bin
 
 # create bin
-mkdir -p ./bin
+#mkdir -p ./bin
 
 # let's do an out-of-source build
-cd ./bin
+#cd ./bin
 
 # build sample
-cmake ../ && make
+#cmake ../ && make
 
 # copy dependencies
-cp ../../config/log4cxx.config.xml ./
+#cp ../../config/log4cxx.config.xml ./
 
 # go back to project root
 cd ../..

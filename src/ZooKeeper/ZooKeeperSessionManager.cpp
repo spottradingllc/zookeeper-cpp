@@ -3,8 +3,6 @@
 #include <errno.h>
 #include <string.h>
 
-#include <boost/format.hpp>
-
 #include "Spot/Common/ZooKeeper/IZooKeeperSessionEventHandler.h"
 
 #include "ZooKeeperEvent.h"
@@ -34,7 +32,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
   {
     if( m_isInitialized )
     {
-      throw std::runtime_error( boost::str( boost::format( "Session <%s> already initialized" ) % m_host ) );
+      char result[1024];
+      sprintf( result, "Session <%s> already initialized", m_host.c_str() );
+
+      throw std::runtime_error( result );
     }
 
     // convert expiration timeout from seconds to milliseconds
@@ -43,14 +44,20 @@ namespace Spot { namespace Common { namespace ZooKeeper
     m_handle = zookeeper_init( m_host.c_str(), ZooKeeperEvent::EventHandler, sessionExpirationTimeout, 0, this, 0 );
     if( m_handle == NULL )
     {
-      throw std::runtime_error( boost::str( boost::format( "Session <%s> failed to initialize with errno <%d>" ) % m_host % errno ) );
+      char result[1024];
+      sprintf( result, "Session <%s> failed to initialize with errno <%d>", m_host.c_str(), errno );
+
+      throw std::runtime_error( result );
     }
 
     // wait for connection (or expiration timeout)
     Lock lock( m_sessionMutex );
     if( m_condition.wait_for( lock, std::chrono::seconds( m_connectionTimeout ) ) == std::cv_status::timeout )
     {
-      throw std::runtime_error( boost::str( boost::format( "Session <%s> connection timeout" ) % m_host ) );
+      char result[1024];
+      sprintf( result, "Session <%s> connection timeout", m_host.c_str() );
+
+      throw std::runtime_error( result );
     }
 
     m_isInitialized = true;
@@ -61,7 +68,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
   {
     if( !m_isInitialized )
     {
-      throw std::runtime_error( boost::str( boost::format( "Session <%s> not initialized" ) % m_host ) );
+      char result[1024];
+      sprintf( result, "Session <%s> not initialized", m_host.c_str() );
+
+      throw std::runtime_error( result );
     }
 
     if( m_handle != nullptr )
@@ -84,7 +94,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
 
     if( m_eventHandler != nullptr )
     {
-      throw std::runtime_error( boost::str( boost::format( "Session <%s> event handler already registered" ) % m_host ) );
+      char result[1024];
+      sprintf( result, "Session <%s> event handler already registered", m_host.c_str() );
+
+      throw std::runtime_error( result );
     }
 
     m_eventHandler = eventHandler;
@@ -97,7 +110,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
 
     if( m_eventHandler == nullptr )
     {
-      throw std::runtime_error( boost::str( boost::format( "Session <%s> event handler not registered" ) % m_host ) );
+      char result[1024];
+      sprintf( result, "Session <%s> event handler not registered", m_host.c_str() );
+
+      throw std::runtime_error( result );
     }
 
     m_eventHandler = nullptr;

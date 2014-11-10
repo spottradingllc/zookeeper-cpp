@@ -2,8 +2,6 @@
 
 #include <string.h>
 
-#include <boost/format.hpp>
-
 #include "Spot/Common/ZooKeeper/IZooKeeperNodeEventHandler.h"
 
 #include "ZooKeeperEvent.h"
@@ -222,7 +220,10 @@ namespace Spot { namespace Common { namespace ZooKeeper
     bool result = Erase( path );
     if( !result )
     {
-      throw std::runtime_error( boost::str( boost::format( "Node <%s> event handler does not exist" ) % path ) );
+      char result[1024];
+      sprintf( result, "Node <%s> event handler does not exist", path.c_str() );
+
+      throw std::runtime_error( result );
     }
   }
 

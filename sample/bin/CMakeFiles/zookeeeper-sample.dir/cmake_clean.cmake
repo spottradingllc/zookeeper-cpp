@@ -1,4 +1,4 @@
-FILE(REMOVE_RECURSE
+file(REMOVE_RECURSE
   "CMakeFiles/zookeeeper-sample.dir/main.cpp.o"
   "CMakeFiles/zookeeeper-sample.dir/TestHarness.cpp.o"
   "CMakeFiles/zookeeeper-sample.dir/TestAddEphemeralNodeEventHandlerWhenNodeCreated.cpp.o"
@@ -23,6 +23,6 @@ FILE(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-FOREACH(lang CXX)
-  INCLUDE(CMakeFiles/zookeeeper-sample.dir/cmake_clean_${lang}.cmake OPTIONAL)
-ENDFOREACH(lang)
+foreach(lang CXX)
+  include(CMakeFiles/zookeeeper-sample.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
