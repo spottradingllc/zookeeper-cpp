@@ -7,6 +7,7 @@ You should be familiar with Zookeeper and have read the http://zookeeper.apache.
 
 Downloading
 -----------
+
 You can find the official release packages of the library at::
 
     https://github.com/spottradingllc/zookeeper-cpp
@@ -14,7 +15,8 @@ You can find the official release packages of the library at::
 Building and Installing
 -----------------------
 
-# Building with CMake
+Building with CMake
+~~~~~~~~~~~~~~~~~~~
 
 To build the libraries and run the tests with CMake, you will need to
 have CMake version 2.8.10 or higher installed appropriately in your
