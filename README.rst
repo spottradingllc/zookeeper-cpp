@@ -12,9 +12,6 @@ You can find the official release packages of the library at::
 
     https://github.com/spottradingllc/zookeeper-cpp
 
-Building and Installing
------------------------
-
 Building with CMake
 ~~~~~~~~~~~~~~~~~~~
 
